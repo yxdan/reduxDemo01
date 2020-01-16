@@ -1,8 +1,8 @@
-import {CHANGE_INPUT, ADD_ITEM, DELETE_ITEM} from './actionTypes'
+import {CHANGE_INPUT, ADD_ITEM, DELETE_ITEM, GET_LIST} from './actionTypes'
 
 const defaultStore = {
     inputValue: '请输入内容',
-    listData: ['吃饭', '睡觉', '看电影']
+    listData: []
 }
 export default (store = defaultStore, action)=>{
     // Reducer 只能接受state 不能修改state 
@@ -20,6 +20,11 @@ export default (store = defaultStore, action)=>{
     if (action.type=== DELETE_ITEM) {
         const newState = JSON.parse(JSON.stringify(store))
         newState.listData.splice(action.index, 1)
+        return newState
+    }
+    if (action.type=== GET_LIST) {
+        const newState = JSON.parse(JSON.stringify(store))
+        newState.listData = action.data.data.data.list
         return newState
     }
     return store
