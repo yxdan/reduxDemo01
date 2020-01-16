@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import 'antd/dist/antd.css'
-import {Input, Button, List} from 'antd'
 import store from './store'
+import TodoListUI from './TodoListUI'
 import {changeInputAction,addItemAction , deleteItemAction} from './store/actionCreators'
 
 class TodoList extends Component {
@@ -16,30 +15,13 @@ class TodoList extends Component {
     }
     render() { 
         return ( 
-            <div style={{margin:'10px'}}>
-                <div style={{marginBottom: '10px'}}>
-                    <Input 
-                      placeholder={this.state.inputValue} 
-                      style={{width: '200px', marginRight: '10px'}}
-                      onChange={this.changeInputValue}
-                      value={this.state.inputValue}
-                      />
-                    <Button 
-                      type='primary'
-                      onClick={this.addItem}
-                      >增加</Button>
-                </div>
-                <List 
-                  bordered 
-                  dataSource={this.state.listData}
-                  renderItem={(item, index)=>(
-                      <List.Item 
-                      onClick={this.deleteItem.bind(this, index)}>
-                          {item}
-                      </List.Item>
-                  )}
-                />
-            </div>
+            <TodoListUI 
+                inputValue={this.state.inputValue}
+                listData={this.state.listData}
+                changeInputValue={this.changeInputValue}
+                addItem={this.addItem}
+                deleteItem={this.deleteItem}
+            />
          );
     }
     changeInputValue (e) {
