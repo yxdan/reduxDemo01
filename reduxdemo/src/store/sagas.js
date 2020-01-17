@@ -7,7 +7,7 @@ function* mySaga() {
     yield takeEvery(GET_MY_LIST, getList)
 }
 function* getList() {
-    const res = yield  axios.get('https://www.easy-mock.com/mock/5cfcce489dc7c36bd6da2c99/xiaojiejie/getList')
+    const res = yield  axios.get('https://easy-mock.com/mock/5e1fcf1d8022f467b42c7e31/example/list')
     yield put(getListAction(res))
 }
 export default mySaga
